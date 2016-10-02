@@ -1,0 +1,42 @@
+#layoutBody nav{
+    color: #236B8E;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#layoutBody nav ul{
+    margin-top: 0;
+}
+
+#layoutBody nav ul li{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    background-color: #236B8E;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#layoutBody nav ul li:not(:last-child){
+    margin-right: 10%;
+}
+
+#layoutBody nav ul li{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    background-color: #236B8E;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#layoutBody nav ul li:hover{
+    background-color: #5E2D79;
+    color: white;
+    cursor: pointer;
+}
+
+#layoutBody nav ul a{
+    color: white;
+    text-decoration: none;
+}
