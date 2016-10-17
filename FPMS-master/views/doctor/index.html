@@ -7,19 +7,24 @@
 <link rel="stylesheet" type="text/css" href="../../content/css/datatable.css">
 <script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="mainApp" ng-controller = "doctorController">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
     <h3>(Family Physician Management System)</h3>
+
+    <div>
+        <a ng-click="logout()">{{ userName }}</a>
+    </div>
 </div>
 
-<div id="layoutBody" ng-app="mainApp" ng-controller = "doctorController">
+<div id="layoutBody">
     <nav id="mainNavigation">
         <ul>
             <li><a href="../home/index.html">Home</a></li>
             <li><a href="../doctor/index.html">Doctors</a></li>
             <li><a href="../patient/index.html">Patients</a></li>
+            <li><a href="../reports/index.html">Reports</a></li>
         </ul>
     </nav>
 
@@ -30,12 +35,14 @@
                 <th>First Name</th>
                 <th>Last Name</th>
             </tr>
-            <tr ng-repeat="doctor in doctors">
+            <tr ng-repeat="doctor in doctorsList.doctors" ng-click="getDoctor($index)">
                 <td>{{ doctor.type }}</td>
                 <td>{{ doctor.firstName }}</td>
                 <td>{{ doctor.lastName }}</td>
             </tr>
         </table>
+        <button type="button" ng-click="addNewDoctor()" ng-disabled="isReceptionist()">Add New</button>
+        <button type="button" ng-click="editDoctor()" ng-disabled="isReceptionist()">Edit</button>
     </div>
 </div>
 
@@ -44,6 +51,7 @@
 </div>
 
 <script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
+<script src="../../scripts/other/checkauthentication.js"></script>
 <script src="../../scripts/controllers/doctorcontroller.js"></script>
 
 </body>

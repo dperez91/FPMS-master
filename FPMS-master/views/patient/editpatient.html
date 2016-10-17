@@ -8,23 +8,108 @@
 <link rel="stylesheet" type="text/css" href="../../content/css/datatable.css">
 <script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="mainApp" ng-controller = "editPatientController">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
     <h3>(Family Physician Management System)</h3>
+
+    <div>
+        <a ng-click="logout()">{{ userName }}</a>
+    </div>
 </div>
 
-<div id="layoutBody" ng-app="mainApp">
+<div id="layoutBody">
     <nav id="mainNavigation">
         <ul>
             <li><a href="../home/index.html">Home</a></li>
             <li><a href="../doctor/index.html">Doctors</a></li>
             <li><a href="../patient/index.html">Patients</a></li>
+            <li><a href="../reports/index.html">Reports</a></li>
         </ul>
     </nav>
 
-    <div id="content" class="contentMargins"></div>
+    <div id="content" class="contentMargins">
+        <form name="editPatientForm" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.ssn.$invalid && !editPatientForm.ssn.$pristine }">
+            <label>Social Security Number:</label><br>
+            <input name="ssn" class="form-control  ssnFormatting" type="text" maxlength="11" ng-model="patient.ssn" ng-maxlength="ssnMaxlength" required />
+            <p ng-show="editPatientForm.ssn.$invalid && !editPatientForm.ssn.$pristine" class="help-block">The social security number is required.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.firstName.$invalid && !editPatientForm.firstName.$pristine }">
+            <label>First Name:</label><br>
+            <input name="firstName" class="form-control" type="text" ng-model="patient.firstName" required>
+            <p ng-show="editPatientForm.firstName.$invalid && !editPatientForm.firstName.$pristine" class="help-block">The first name is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.lastName.$invalid && !editPatientForm.lastName.$pristine }">
+            <label>Last Name:</label><br>
+            <input name="lastName" class="form-control" type="text" ng-model="patient.lastName" required>
+            <p ng-show="editPatientForm.lastName.$invalid && !editPatientForm.lastName.$pristine" class="help-block">The last name is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.gender.$invalid && !editPatientForm.gender.$pristine }">
+            <label>Gender:</label><br>
+            <select ng-model="patient.gender" ng-options="gender.name for gender in genders.genders" ng-init="patient.gender = genders.genders[initialSelectedGenderIndex]">
+            </select>
+            <p ng-show="newPatientForm.gender.$error.required" class="help-block">The state is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.address.$invalid && !editPatientForm.address.$pristine }">
+            <label>Address:</label><br>
+            <input name="address" class="form-control" type="text" ng-model="patient.address" required>
+            <p ng-show="editPatientForm.address.$invalid && !editPatientForm.address.$pristine" class="help-block">The address is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.city.$invalid && !editPatientForm.city.$pristine }">
+            <label>City:</label><br>
+            <input name="city" class="form-control" type="text" ng-model="patient.city" required>
+            <p ng-show="editPatientForm.city.$invalid && !editPatientForm.city.$pristine" class="help-block">The city is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.state.$invalid && !editPatientForm.state.$pristine }">
+            <label>State:</label><br>
+            <select name="state" ng-model="patient.state" ng-options="state.abbreviation for state in states.states" ng-init="patient.state = states.states[initialSelectedStateIndex]">
+            </select>
+            <p ng-show="editPatientForm.state.$error.required" class="help-block">The state is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.zip.$invalid && !editPatientForm.zip.$pristine }">
+            <label>Zip:</label><br>
+            <input name="zip" class="form-control" type="text" maxlength="5" ng-model="patient.zip" ng-maxlength="zipMaxlength" required>
+            <p ng-show="editPatientForm.zip.$invalid && !editPatientForm.zip.$pristine" class="help-block">The zip code is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.phoneNumber.$invalid && !editPatientForm.phoneNumber.$pristine }">
+            <label>Phone Number:</label><br>
+            <input name="phoneNumber" class="form-control phoneNumberFormatting" type="text" maxlength="13" ng-model="patient.phoneNumber" ng-maxlength="phoneNumberMaxlength" required>
+            <p ng-show="editPatientForm.phoneNumber.$invalid && !editPatientForm.phoneNumber.$pristine" class="help-block">The phone number is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.insuranceProvider.$invalid && !editPatientForm.insuranceProvider.$pristine }">
+            <label>Insurance Provider:</label><br>
+            <input name="insuranceProvider" class="form-control" type="text" ng-model="patient.insuranceProvider" required>
+            <p ng-show="editPatientForm.insuranceProvider.$invalid && !editPatientForm.insuranceProvider.$pristine" class="help-block">The insurance provider is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.insuranceProviderNumber.$invalid && !editPatientForm.insuranceProviderNumber.$pristine }">
+            <label>Insurance Provider Number:</label><br>
+            <input name="insuranceProviderNumber" class="form-control" type="text" ng-model="patient.insuranceProviderNumber" required>
+            <p ng-show="editPatientForm.insuranceProviderNumber.$invalid && !editPatientForm.insuranceProviderNumber.$pristine" class="help-block">The insurance provider number is required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : editPatientForm.physician.$invalid && !editPatientForm.physician.$pristine }">
+            <label>Physician:</label><br>
+            <select name="physician" ng-model="patient.physician" ng-options="(doctor.firstName + ' ' + doctor.lastName) for doctor in physicians.doctors" ng-init="patient.physician = physicians.doctors[initialSelectedPhysicianIndex]">
+            </select>
+            <p ng-show="editPatientForm.physician.$error.required" class="help-block">The name of the physician is required.</p>
+            </div>
+            
+            <br><br>
+            <button ng-disabled="editPatientForm.$invalid" ng-click="savePatient()">Save Patient Information</button>
+        </form>
+    </div>
 </div>
 
 <div id="layoutFooter">
@@ -32,7 +117,9 @@
 </div>
 
 <script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
+<script src="../../scripts/other/checkauthentication.js"></script>
 <script src="../../scripts/controllers/patientcontroller.js"></script>
+<script src="../../scripts/other/fieldformatting.js"></script>
 
 </body>
 </html>

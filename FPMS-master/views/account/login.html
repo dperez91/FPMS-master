@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor - Index</title>
+<link rel="stylesheet" type="text/css" href="../../content/css/mainlogin.css">
+<link rel="stylesheet" type="text/css" href="../../content/css/modals.css">
+<script src="../../scripts/addons/angular.min.js"></script>
+</head>
+<body>
+
+<div id="layoutHeader">
+    <h1>FPMS</h1>
+    <h3>(Family Physician Management System)</h3>
+</div>
+
+<div id="layoutBody" ng-app="mainApp" ng-controller = "accountController">
+    <div id="content" class="contentMargins">
+        <form name="loginForm" novalidate>            
+            <div class="form-group" ng-class="{ 'has-error' : loginForm.userName.$invalid && !loginForm.userName.$pristine }">
+            <label>Username:</label><br>
+            <input name="userName" type="text" class="form-control" ng-model="user.userName" required>
+            <p ng-show="loginForm.userName.$invalid && !loginForm.userName.$pristine" class="help-block">The username required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+            <label>Password:</label><br>
+            <input name="password" type="password" class="form-control" ng-model="user.password" required>
+            <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">The password required.</p>
+            </div>
+            
+            <div class="form-group" ng-class="{ 'has-error' : loginForm.userType.$invalid && !loginForm.userType.$pristine }">
+            <label>User Type:</label><br>
+            <select name="userType" class="form-control" ng-model="user.userType" ng-options="userType.name for userType in userTypes.userTypes" ng-init="user.userType = userTypes.userTypes[0]">
+            </select>
+            <p ng-show="loginForm.userType.$error.required" class="help-block">the user type is required.</p>
+            </div>
+
+            <br><br>
+            <button ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
+        </form>
+    </div>
+</div>
+
+<div id="layoutFooter">
+
+</div>
+
+<script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
+<script src="../../scripts/controllers/accountcontroller.js"></script>
+<script src="../../scripts/other/fieldformatting.js"></script>
+
+</body>
+</html>

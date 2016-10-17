@@ -4,12 +4,17 @@
 <title>Doctor - Index</title>
 <link rel="stylesheet" type="text/css" href="../../content/css/main.css">
 <link rel="stylesheet" type="text/css" href="../../content/css/navigation.css">
+<script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="mainApp" ng-controller = "homeController">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
     <h3>(Family Physician Management System)</h3>
+
+    <div>
+        <a ng-click="logout()">{{ userName }}</a>
+    </div>
 </div>
 
 <div id="layoutBody">
@@ -18,6 +23,7 @@
             <li><a href="../home/index.html">Home</a></li>
             <li><a href="../doctor/index.html">Doctors</a></li>
             <li><a href="../patient/index.html">Patients</a></li>
+            <li><a href="../reports/index.html">Reports</a></li>
         </ul>
     </nav>
 
@@ -37,6 +43,8 @@
 </div>
 
 <script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
+<script src="../../scripts/other/checkauthentication.js"></script>
+<script src="../../scripts/controllers/homecontroller.js"></script>
 
 </body>
 </html>

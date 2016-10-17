@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Doctor - Index</title>
+<link rel="stylesheet" type="text/css" href="../../content/css/doctorreport.css">
+<script src="../../scripts/addons/angular.min.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller = "doctorReportController">
+
+<div id="layoutHeader">
+    <div class="mainTitle">
+    <h1>FPMS</h1>
+    <h3>(Family Physician Management System)</h3>
+    </div>
+
+    <div class="subTitle">
+    <h2>Current Doctor Report</h2>
+    </div>
+</div>
+
+<div id="layoutBody">
+    <div class="contentMargins">
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr ng-repeat="doctor in doctorsList.doctors">
+                <td>{{ doctor.type }}</td>
+                <td>{{ doctor.firstName }}</td>
+                <td>{{ doctor.lastName }}</td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Address:</td><td>{{ doctor.address }}</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td><td>{{ doctor.city }}</td>
+                        </tr>
+                        <tr>
+                            <td>State:</td><td>{{ doctor.state }}</td>
+                        </tr>
+                        <tr>
+                            <td>Zip:</td><td>{{ doctor.zip }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td><td>{{ doctor.phoneNumber }}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="layoutFooter">
+    <table>
+        <tr>
+            <td><h3>Total Number of Doctors:</h3></td>
+            <td><h3>{{ totalnumber }}</h3></td>
+        </tr>
+    </table>
+</div>
+
+<script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
+<script src="../../scripts/controllers/reportcontroller.js"></script>
+
+</body>
+</html>
