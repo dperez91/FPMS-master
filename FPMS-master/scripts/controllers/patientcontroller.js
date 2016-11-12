@@ -58,6 +58,14 @@ mainApp.controller('patientController', function($scope){
         localStorage.selectedPatientIndex = index;
     }
 
+    $scope.deletePatient = function(){
+        $scope.patientsList.patients.splice(localStorage.selectedPatientIndex, 1);
+
+        patientsArray = $scope.patientsList;
+        localStorage.patients = JSON.stringify(patientsArray);
+        localStorage.selectedPatientIndex = '';
+    }
+
     $scope.logout = function(){
         localStorage.userAuthorized = "false";
         localStorage.isDoctor = "false";

@@ -1,5 +1,9 @@
 var mainApp = angular.module("mainApp", []);
 
+mainApp.controller('reportController', function($scope){
+    $scope.userName = localStorage.userName;
+});
+
 mainApp.controller('doctorReportController', function($scope){
     $scope.doctorsList = JSON.parse(localStorage.doctors);
     $scope.totalnumber = $scope.doctorsList.doctors.length;

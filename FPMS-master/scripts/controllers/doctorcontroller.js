@@ -51,6 +51,14 @@ mainApp.controller('doctorController', function($scope){
         localStorage.selectedDoctorIndex = index;
     }
 
+    $scope.deleteDoctor = function(){
+        $scope.doctorsList.doctors.splice(localStorage.selectedDoctorIndex, 1);
+
+        doctorsArray = $scope.doctorsList;
+        localStorage.doctors = JSON.stringify(doctorsArray);
+        localStorage.selectedDoctorIndex = '';
+    }
+
     $scope.isReceptionist = function(){
         if(localStorage.isReceptionist == "true"){
             return true;
@@ -91,13 +99,13 @@ mainApp.controller('newDoctorController', function($scope){
                         state: "", zip: ""};
 
             newDoctor.firstName = $scope.doctor.firstName;
-            newDoctor.firstName = $scope.doctor.lastName;
-            newDoctor.firstName = $scope.doctor.phoneNumber;
-            newDoctor.firstName = $scope.doctor.type;
-            newDoctor.firstName = $scope.doctor.address;
-            newDoctor.firstName = $scope.doctor.city;
-            newDoctor.firstName = $scope.doctor.state.abbreviation;
-            newDoctor.firstName = $scope.doctor.zip;
+            newDoctor.lastName = $scope.doctor.lastName;
+            newDoctor.phoneNumber = $scope.doctor.phoneNumber;
+            newDoctor.type = $scope.doctor.type;
+            newDoctor.address = $scope.doctor.address;
+            newDoctor.city = $scope.doctor.city;
+            newDoctor.state = $scope.doctor.state.abbreviation;
+            newDoctor.zip = $scope.doctor.zip;
 
             doctorsArray.doctors.push(newDoctor);
 
@@ -146,13 +154,13 @@ mainApp.controller('editDoctorController', function($scope){
                         state: "", zip: ""};
 
             editedDoctor.firstName = $scope.doctor.firstName;
-            editedDoctor.firstName = $scope.doctor.lastName;
-            editedDoctor.firstName = $scope.doctor.phoneNumber;
-            editedDoctor.firstName = $scope.doctor.type;
-            editedDoctor.firstName = $scope.doctor.address;
-            editedDoctor.firstName = $scope.doctor.city;
-            editedDoctor.firstName = $scope.doctor.state.abbreviation;
-            editedDoctor.firstName = $scope.doctor.zip;
+            editedDoctor.lastName = $scope.doctor.lastName;
+            editedDoctor.phoneNumber = $scope.doctor.phoneNumber;
+            editedDoctor.type = $scope.doctor.type;
+            editedDoctor.address = $scope.doctor.address;
+            editedDoctor.city = $scope.doctor.city;
+            editedDoctor.state = $scope.doctor.state.abbreviation;
+            editedDoctor.zip = $scope.doctor.zip;
 
             doctorsArray.doctors[localStorage.selectedDoctorIndex] = editDoctor;
 

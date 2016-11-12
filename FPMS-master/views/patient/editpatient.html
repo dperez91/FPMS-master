@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../../content/css/datatable.css">
 <script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body ng-app="mainApp" ng-controller = "editPatientController">
+<body ng-app="mainApp" ng-controller = "editPatientController" class="ng-cloak">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
@@ -77,7 +77,7 @@
             
             <div class="form-group" ng-class="{ 'has-error' : editPatientForm.zip.$invalid && !editPatientForm.zip.$pristine }">
             <label>Zip:</label><br>
-            <input name="zip" class="form-control" type="text" maxlength="5" ng-model="patient.zip" ng-maxlength="zipMaxlength" required>
+            <input name="zip" class="form-control zipCodeFormatting" type="text" maxlength="5" ng-model="patient.zip" ng-maxlength="zipMaxlength" required>
             <p ng-show="editPatientForm.zip.$invalid && !editPatientForm.zip.$pristine" class="help-block">The zip code is required.</p>
             </div>
             

@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../../content/css/datatable.css">
 <script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="mainApp" ng-controller = "reportController" class="ng-cloak">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
@@ -31,7 +31,7 @@
     <div class="contentMargins">
         <table>
             <tr>
-                <td><a href="doctor.html"  target="_blank">Patients</a></td>
+                <td><a href="doctor.html"  target="_blank">Doctors</a></td>
                 <td><a href="patient.html"  target="_blank">Patients</a></td>
             </tr>
         </table>
@@ -44,6 +44,7 @@
 
 <script src="../../scripts/addons/jquery-3.1.0.min.js"></script>
 <script src="../../scripts/other/checkauthentication.js"></script>
+<script src="../../scripts/controllers/reportcontroller.js"></script>
 
 </body>
 </html>

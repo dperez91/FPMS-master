@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../../content/css/datatable.css">
 <script src="../../scripts/addons/angular.min.js"></script>
 </head>
-<body ng-app="mainApp" ng-controller = "doctorController">
+<body ng-app="mainApp" ng-controller = "doctorController" class="ng-cloak">
 
 <div id="layoutHeader">
     <h1>FPMS</h1>
@@ -43,6 +43,7 @@
         </table>
         <button type="button" ng-click="addNewDoctor()" ng-disabled="isReceptionist()">Add New</button>
         <button type="button" ng-click="editDoctor()" ng-disabled="isReceptionist()">Edit</button>
+        <button type="button" ng-click="deleteDoctor()" ng-disabled="isReceptionist()">Delete</button>
     </div>
 </div>
 
